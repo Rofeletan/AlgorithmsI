@@ -1,5 +1,5 @@
+#! /usr/bin/env python
 import argparse
-
 
 def merge(array1, array2):	
 	i = j = 0
@@ -53,13 +53,20 @@ parser.add_argument("file")
 parser.parse_args()
 args = parser.parse_args()
 file = open(args.file)
-lines = []
-for line in file.readlines():
-	line = line.rstrip()
-	lines.append(int(line))
 
+#Here was my original code for loading the file into an integer array
+#After checking the forums I discovered the more concise way below
+
+#lines = []
+#for line in file.readlines():
+#	line = line.rstrip()
+#	lines.append(int(line))
+
+lines = map(int, file)
+file.close()
+
+#Printed out the original array and just sorted array to check my logic originally
 #print lines
-
 #print sort(lines)
 
 print sort_and_count(lines)[1]
