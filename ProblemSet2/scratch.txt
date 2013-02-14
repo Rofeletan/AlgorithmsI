@@ -1,0 +1,36 @@
+Question 1-
+T(n)=7*T(n/3)+n2
+
+a = 7
+b = 3
+d = 2
+
+7 < 3 ^ 2 - Case 2
+
+O(n ^ d) = O(n ^ 2)
+
+Question 1 Try 2-
+
+T(n)=5*T(n/3)+4n
+
+a = 5
+b = 3
+d = 1
+
+5 > 3
+
+O(n ^ log b a) = O(n ^ log 3 5)
+
+Question 2-
+
+T(n) = 1 * T(n/2) + O(n ^ 1)
+
+a = 1
+b = 1
+d = 1
+
+1 = 1^1
+
+O(n ^ d log n) = O(n ^ 1 log n)
+
+
