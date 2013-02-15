@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 import argparse
+import math
 
 def partition_begin(array, start, end):
   
@@ -52,9 +53,31 @@ def quick_sort_end(array, start, end):
   return (array, comparisions)
   
 def partition_median_of_three(array, start, end):
-  x,y,z = array[start], array[start + (start-end)/2] ,array[end-1]
+  if end - start > 2:
+    mid = int(math.ceil(((end - start) - 1) / 2))     
+      
+    x,y,z = array[start], array[start + mid], array[end-1]
+    if x <= y and x <= z:
+      if y <= z:
+        array[start], array[start + mid] = array[start + mid], array[start]
+      else:
+        array[start], array[end-1] = array[end-1], array[start]
+    elif y <= x and y <= z:
+      if z <= x:      
+        array[start], array[end-1] = array[end-1], array[start]
+      #if x is less than z do nothing since x is at the start already
+    elif z <= x and z <= y:
+      if y <= x:      
+        array[start], array[start + mid] = array[start + mid], array[start]
+      #if x is less than y do nothing since x is at the start already
+  
+  else:
+    if array[start] > array[end-1]:
+      array[start], array[end-1] = array[end-1], array[start ]
   
   partition_element = array[start]
+ 
+  
   i = start + 1
   for j in range (start + 1, end):
     if array[j] < partition_element: 
@@ -88,6 +111,6 @@ file.close()
 
 #print lines
 #print '\n'
-print quick_sort_begin(lines, 0, len(lines))
-print quick_sort_end(lines, 0, len(lines))
-print quick_sort_median_of_three(lines, 0, len(lines))
+print quick_sort_begin(list(lines), 0, len(lines))[1]
+print quick_sort_end(list(lines), 0, len(lines))[1]
+print quick_sort_median_of_three(list(lines), 0, len(lines))[1]
