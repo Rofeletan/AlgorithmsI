@@ -19,21 +19,21 @@ for line in file.readlines():
     edges.append([parts[0],edge])
   
 
-for vertice in vertices:
-  print vertice
+#for vertice in vertices:
+#  print vertice
   
-print '\n'
+#print '\n'
 
-for edge in edges:
-  print edge
+#for edge in edges:
+#  print edge
   
-print '\n'
+#print '\n'
 
   
 while len(vertices) > 2:
   edge = edges[randrange(len(edges))]
-  print edge 
-  print '\n'
+  #print edge 
+  #print '\n'
   
   vertice1 = None
   vertice2 = None
@@ -75,12 +75,12 @@ while len(vertices) > 2:
   
   edges = [value for value in edges if value[0] != value[1]]
   
-  for vertice in vertices:
-    print vertice
-    
-  print '\n'
+for vertice in vertices:
+  print vertice
+  
+print '\n'
 
-  for edge in edges:
-    print edge  
-    
-  print '\n'
+for edge in edges:
+  print edge  
+  
+print '\n'
