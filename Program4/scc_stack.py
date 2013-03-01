@@ -24,21 +24,24 @@ def depth_first_search(graph, vertice, leader, do_finish):
       print vertice.label
     print '\n' 
     current_vertice = stack.pop()
-    print 'Popping Vertice: ', vertice.label, '\n'
-    if not current_vertice.explored:
-      current_vertice.explored = True
-      current_vertice.leader = leader
-      unexplored_count = 0
-      for edge in current_vertice.edges:        
-        if not graph[edge].explored:
-          stack.append(graph[edge])
-          unexplored_count += 1
+    print 'Popping Vertice: ', vertice.label, '\n'    
+    current_vertice.explored = True
+    current_vertice.leader = leader
+    
+    unexplored_edges = []
+    for edge in current_vertice.edges:        
+      if not graph[edge].explored:
+        unexplored_edges.append(graph[edge])
+    
+    print 'Unexplored: ', len(unexplored_edges), '\n'
+    
+    if unexplored_edges 
+    
+    elif: do_finish:
+      finish += 1
+      current_vertice.finish = finish
+      orderedvertices[finish - 1] = current_vertice
       
-      print 'Unexplored: ', unexplored_count, '\n'
-      if unexplored_count == 0 and do_finish:
-        finish += 1
-        current_vertice.finish = finish
-        orderedvertices[finish - 1] = current_vertice
   
 parser = argparse.ArgumentParser()
 parser.add_argument("file")
