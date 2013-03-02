@@ -19,12 +19,13 @@ def depth_first_search(graph, vertice, leader, do_finish):
   stack.append(vertice)
   
   while stack:
-    print 'Stack: '
-    for vertice in stack:
-      print vertice.label
-    print '\n' 
+    # print 'Stack: '
+    # for vertice in stack:
+      # print vertice.label
+    # print '\n' 
     current_vertice = stack.pop()
-    print 'Popping Vertice: ', vertice.label, '\n'    
+    # print 'Popping Vertice: ', current_vertice.label, '\n'    
+    
     current_vertice.explored = True
     current_vertice.leader = leader
     
@@ -33,13 +34,16 @@ def depth_first_search(graph, vertice, leader, do_finish):
       if not graph[edge].explored:
         unexplored_edges.append(graph[edge])
     
-    print 'Unexplored: ', len(unexplored_edges), '\n'
+    #print 'Unexplored: ', len(unexplored_edges), " ", unexplored_edges, '\n'
     
-    if unexplored_edges 
-    
-    elif: do_finish:
+    if unexplored_edges:
+      stack.append(current_vertice)
+      stack += unexplored_edges
+      
+    elif do_finish and current_vertice.finish == None :
       finish += 1
       current_vertice.finish = finish
+      # print 'Finish', finish
       orderedvertices[finish - 1] = current_vertice
       
   
@@ -88,9 +92,9 @@ for vertice in reversegraph:
   if not reversegraph[vertice].explored:  
     depth_first_search(reversegraph, reversegraph[vertice], reversegraph[vertice], True)
 
-print 'Graph:\n'
-for vertice in orderedvertices:
-  print vertice.label, 'edges: ' , vertice.edges, ' Leader: ', vertice.leader.label, ' Finish: ', vertice.finish
+# print 'Graph:\n'
+# for vertice in orderedvertices:
+  # print vertice.label, 'edges: ' , vertice.edges, ' Leader: ', vertice.leader.label, ' Finish: ', vertice.finish
 
 for rev_vertice in orderedvertices[::-1]:
   vertice = graph[rev_vertice.label]
@@ -110,5 +114,10 @@ for vertice in graph:
   else:
     scc[graph[vertice].leader.label] = 1
     
-for leader in scc:
-  print leader, 'Count: ' , scc[leader]
+# for leader in scc:
+  # print leader, 'Count: ' , scc[leader]
+
+counts = scc.values()
+counts.sort()
+
+print counts[-5:]
