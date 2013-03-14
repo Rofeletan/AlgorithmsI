@@ -13,7 +13,7 @@ num_dict = dict(zip(numbers, numbers) )
 
 matches = []
 
-for target in range(60, 101):
+for target in range(2500, 4001):
   for key in num_dict:
     if  target - num_dict[key]  != num_dict[key]  and target - num_dict[key] in num_dict:    
       matches.append((target, num_dict[key], target - num_dict[key]))
